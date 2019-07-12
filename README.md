@@ -1,6 +1,7 @@
 # Audio File watcher
 
 ## todo
+[] code Dokumentieren
 
 ## About
 Der Audio File Watcher überwacht den angegebenen Pfad auf Änderungen. Wenn eine Änderung passiert, z.B. eine Datei erstellt wird, prüft das Programm ob es sich um eine .wav Datei handelt. Wenn ja, wird das Programm diese .wav Datei in eine mp3 Datei konvertieren und in einem speziellen Pfad ablegen. Nach dem die mp3 Datei erfolgreich erstellt worden ist, wird die benutzte .wav Datei in einen GOOD Verzeichnis verschoben.
