@@ -32,7 +32,8 @@ class Watcher:
     OUTPUT_DIR = "/media/festplatte/public/recordings/output"
 
     def __init__(self):
-        logger.info("Creating observer")
+        #logger.info("Creating observer")
+        print("Creating observer")
         self.observer = Observer()
 
     def run(self):
