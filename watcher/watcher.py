@@ -28,8 +28,8 @@ logger.addHandler(c_handler)
 logger.addHandler(f_handler)
 
 class Watcher:
-    self.DIRECTORY_TO_WATCH = "/media/festplatte/public/recordings/input"
-    self.OUTPUT_DIR = "/media/festplatte/public/recordings/output"
+    DIRECTORY_TO_WATCH = "/media/festplatte/public/recordings/input"
+    OUTPUT_DIR = "/media/festplatte/public/recordings/output"
 
     def __init__(self):
         #logger.info("Creating observer")
@@ -61,8 +61,8 @@ class Watcher:
 
 class Handler(FileSystemEventHandler):
 
-    self.DIRECTORY_TO_WATCH = "/media/festplatte/public/recordings/input"
-    self.OUTPUT_DIR = "/media/festplatte/public/recordings/output"
+    DIRECTORY_TO_WATCH = "/media/festplatte/public/recordings/input"
+    OUTPUT_DIR = "/media/festplatte/public/recordings/output"
     
     @staticmethod
     def on_any_event(event):
@@ -71,7 +71,7 @@ class Handler(FileSystemEventHandler):
         elif event.event_type == "created":
             logger.debug("File found")
             # Check if file is wav file
-            file_list = os.listdir(self.DIRECTORY_TO_WATCH)
+            file_list = os.listdir(Handler.DIRECTORY_TO_WATCH)
             logger.debug(f"File list: {file_list}")
             for track in file_list:
                 if track == "GOOD":
@@ -80,8 +80,10 @@ class Handler(FileSystemEventHandler):
 
                     if track.endswith(".wav"):
                         trackname, ext = track.split(".")
-                        from_path = "{}/{}".format(self.IRECTORY_TO_WATCH, track)
-                        export_path = "{}/{}.mp3".format(self.OUTPUT_DIR, trackname)
+                        from_path = "{}/{}".format(
+                            Handler.DIRECTORY_TO_WATCH, track)
+                        export_path = "{}/{}.mp3".format(
+                            Handler.OUTPUT_DIR, trackname)
                         # create mp3 file from wave file
                         logger.info("Creating mp3 file")
                         
@@ -96,7 +98,7 @@ class Handler(FileSystemEventHandler):
 
                             # move wav file to GOOD location
                             logger.info(f"Moving {trackname} to GOOD/")
-                            shutil.move(from_path, self.DIRECTORY_TO_WATCH + "/GOOD/" + track)
+                            shutil.move(from_path, Handler.DIRECTORY_TO_WATCH + "/GOOD/" + track)
                         except Exception as e:
                             logger.error("Could not move file")
                             logger.error(e)
