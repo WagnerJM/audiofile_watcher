@@ -38,12 +38,14 @@ class Watcher:
 
     def run(self):
         logger.info("Creating Event Handler")
+        print("Creating Event Handler")
         event_handler = Handler()
         self.observer.schedule(
             event_handler,
             self.DIRECTORY_TO_WATCH,
             recursive=False
         )
+        print("Starting observer")
         logger.info("Starting observer")
 
         self.observer.start()
